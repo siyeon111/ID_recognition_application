@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication0_basic.ViewModels"
+        x:Class="AvaloniaApplication0_basic.Views.BackWindow"
+        Title="BackWindow"
+        Width="800"
+        Height="600"
+        WindowStartupLocation="CenterScreen"
+        x:DataType="vm:BackWindowViewModel"
+        Background="#F5F5F5"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="0"
+        SystemDecorations="None">
+
+	<Design.DataContext>
+		<vm:BackWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Border Grid.Row="0" Background="#E0E6F8" BorderBrush="#000000" BorderThickness="1" CornerRadius="5" Margin="20,10" Padding="10">
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<TextBlock Text="{Binding LeaveHeaderText}" FontSize="16" FontWeight="Bold" Margin="0,0,10,0" Foreground="#000" VerticalAlignment="Center"/>
+				</StackPanel>
+			</Border>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Button Content="{Binding StartText}" Command="{Binding StartBackWebcamCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Width="200" Height="70" Margin="0,0,20,0" FontSize="20"/>
+				<Button Content="{Binding ReturnText}" Click="ReturnButton_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Width="200" Height="70" FontSize="20"/>
+			</StackPanel>
+			<Image Source="{Binding VideoFrame}" Width="480" Height="360" Margin="0,20,0,0"/>
+			<TextBlock Text="{Binding QRCodeResult}" FontSize="16" Margin="0,20,0,0"/>
+		</StackPanel>
+
+		<StackPanel Grid.Row="2" Margin="20" HorizontalAlignment="Center">
+			<TextBlock Text="© Moble" FontSize="12" Foreground="Gray"/>
+		</StackPanel>
+	</Grid>
+</Window>

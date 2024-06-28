@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication0_basic.ViewModels"
+        x:Class="AvaloniaApplication0_basic.Views.HelpWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="{Binding HelpText}"
+        Width="800"
+        Height="600"
+        WindowStartupLocation="CenterScreen">
+
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+		<!--<TextBlock Name="HelpTitle" Text="{Binding HelpText}" FontSize="20" Margin="20"/>-->
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+			<Button Name="ChatButton" Content="{Binding AttendText}" Click="ChatButton_Click" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="150" Height="60" Margin="10"/>
+			<Button Name="etcButton" Content="{Binding LeaveText}" Click="etc_Click" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="150" Height="60" Margin="10"/>
+		</StackPanel>
+		<TextBlock Name="ResultTextBlock" FontSize="16" Margin="10" HorizontalAlignment="Center"/>
+		<Button Name="CloseButton" Content="{Binding ExitText}" Click="CloseButton_Click" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Height="40" Margin="10"/>
+	</StackPanel>
+</Window>

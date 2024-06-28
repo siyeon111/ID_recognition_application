@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication0_basic.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="AvaloniaApplication0_basic.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Main_Page"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="0"
+        SystemDecorations="None">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- 날씨 정보를 표시하는 부분 추가 -->
+		<Border Grid.Row="0" Background="#E0E6F8" BorderBrush="#000000" BorderThickness="1" CornerRadius="5" Margin="20,10" Padding="10">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<TextBlock Text="{Binding DateText}" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,5,0" Foreground="#DF013A"/>
+				<TextBlock Text="{Binding Date}" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,10,0" Foreground="#0489B1"/>
+
+				<TextBlock Text="{Binding TemperatureText}" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,5,0" Foreground="#DF013A"/>
+				<TextBlock FontSize="16" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,10,0" Foreground="#0489B1">
+					<Run Text="{Binding Temperature}" />
+					<Run Text=" ℃" />
+				</TextBlock>
+
+				<TextBlock Text="{Binding WeatherText}" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,5,0" Foreground="#DF013A"/>
+				<TextBlock Text="{Binding WeatherDescription}" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI" Margin="0,0,10,0" Foreground="#0489B1"/>
+			</StackPanel>
+		</Border>
+
+		<StackPanel Grid.Row="1" Margin="20,30,20,0" HorizontalAlignment="Center">
+			<TextBlock Text="{Binding WelcomeText}" FontSize="40" FontWeight="Bold" Foreground="#6200EE"/>
+		</StackPanel>
+
+		<StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<StackPanel HorizontalAlignment="Center" Margin="0,0,0,50">
+				<TextBlock Text="{Binding ChooseText}" FontSize="30" FontWeight="Bold" Margin="0,0,0,20" Foreground="#a9aee8"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Button Content="{Binding AttendText}" Click="GoButton_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Width="200" Height="100" Margin="0,0,20,0" FontSize="30" IsEnabled="{Binding IsButtonEnabled}"/>
+				<Button Content="{Binding LeaveText}" Click="BackButton_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Width="200" Height="100" FontSize="30" IsEnabled="{Binding IsButtonEnabled}"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Row="3" Margin="20" HorizontalAlignment="Center">
+			<TextBlock Text="© Moble" FontSize="12" Foreground="Gray"/>
+		</StackPanel>
+
+		<!-- Exit 및 Help 버튼을 Grid에 추가하여 위치 고정 -->
+		<StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+			<Button Content="{Binding HelpText}" Click="HelpButton_Click" Width="100" Height="50" FontSize="16" FontWeight="Bold" Background="#FE2E2E" Foreground="White" CornerRadius="10" Padding="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,10,0,10"/>
+			<Button Content="{Binding ExitText}" Click="ExitButton_Click" Width="100" Height="50" FontSize="16" FontWeight="Bold" Background="#31B404" Foreground="White" CornerRadius="10" Padding="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,10,10"/>
+		</StackPanel>
+
+		<!-- ENG 및 KOR 버튼을 Grid에 추가하여 위치 고정 -->
+		<StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+			<Button Content="ENG" Command="{Binding SetEnglishCommand}" Width="100" Height="50" FontSize="16" FontWeight="Bold" Background="#1E90FF" Foreground="White" CornerRadius="10" Padding="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,10,0,10"/>
+			<Button Content="KOR" Command="{Binding SetKoreanCommand}" Width="100" Height="50" FontSize="16" FontWeight="Bold" Background="#FF4500" Foreground="White" CornerRadius="10" Padding="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,10,10"/>
+		</StackPanel>
+	</Grid>
+</Window>
